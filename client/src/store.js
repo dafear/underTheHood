@@ -1,8 +1,9 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux'
 
+import {underTheHoodReducer} from './reducers';
 
-export default createStore(() => [], undefined, applyMiddleware(thunk));
+export default createStore(underTheHoodReducer, applyMiddleware(thunk));
+
 
 
 

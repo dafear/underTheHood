@@ -1,11 +1,13 @@
-import {API_BASE_URL} from '../config';
+export const fetchData = () => {
+	return (dispatch) => {
+      axios.get()
+      .then((res) => {
+          return res.json()
+      }) 
+      .then((data) => {
+      console.log(data)
+      })
+	}
+}
 
 
-
-axios.get(API_BASE_URL)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });

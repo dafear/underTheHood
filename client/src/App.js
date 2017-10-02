@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import axios from 'axios';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import GoogleMap from './components/GoogleMap';
 import './App.css';
 
 

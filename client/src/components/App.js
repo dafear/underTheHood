@@ -7,8 +7,10 @@ class App extends Component {
   render() {
     return (
       <div> 
+        
         <GoogleMap />
-         <Search />
+        <Search />
+       
       </div>
     );
   }

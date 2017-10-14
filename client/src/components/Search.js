@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import {upDateMapLocation} from '../actions'
+import './Map.css'
 import {connect} from 'react-redux'
 
 class Search extends Component {
@@ -26,6 +27,17 @@ class Search extends Component {
 
     render() {
       const props = this.props
+
+
+      const myStyles = {
+        
+        input: {
+          height: '100%',
+          width: '100%',
+          padding: '20px', 
+        },
+
+      }
      
 
       const inputProps = {
@@ -33,9 +45,15 @@ class Search extends Component {
       onChange: this.onChange,
     }
         return (
+          <div className="Search">
+
           <PlacesAutocomplete inputProps={inputProps} 
-          onEnterKeyDown={() => this.handleSelect(props)} 
-        />
+          styles={myStyles}
+          onEnterKeyDown={() => this.handleSelect(props)} />
+           <button onClick={() => this.handleSelect(props)} >Submit</button>
+
+              </div>
+           
      
     );
   }

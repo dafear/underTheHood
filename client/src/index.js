@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 // import App from './components/App';
-import register from './components/register';
+import Main from './components/Main';
 import './index.css';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<register />
+		<Main />
 	 </Provider>,
   document.getElementById('root'));
 

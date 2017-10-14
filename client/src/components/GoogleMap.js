@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import {connect} from 'react-redux'
+// import './Map.css'
 
   export class GoogleMap extends Component {
    // fetchPlaces(mapProps, map) {
@@ -17,12 +18,13 @@ import {connect} from 'react-redux'
     
         const style = {
         width: '100%',
-        height: '100%'
+        height: '100%',
+       
       }
 
     return (
 
-        <Map 
+        <Map className="Cool"
         google={window.google} 
         // onReady={this.fetchPlaces}
         center={{

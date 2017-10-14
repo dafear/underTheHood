@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
+import './cool.css';
 import axios from 'axios';
 
 
 
 
-export default class Signin extends React.Component {
+class SignIn extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +16,9 @@ export default class Signin extends React.Component {
       submitted: false,
     };
   }
+
+     
+
 
   handleEmailChange = (evt) => {
       this.setState({ email: evt.target.value, error: false });
@@ -85,13 +89,17 @@ export default class Signin extends React.Component {
     render() {
 
 
-
     const isEnabled = this.canBeSubmitted();
 
      
        const style = {
             textAlign: 'center',
            };
+
+
+        const style2 = {
+          color: '#FF8C00',
+        }
 
 
            // console.log(this.state.error);
@@ -113,13 +121,13 @@ export default class Signin extends React.Component {
 
 
   return (
-
+     
        <div className="Signin" style={style}>
 
            <form onSubmit={this.handleSubmit}>
                 
-                  <h1>Under The Hood</h1>
-                  <h2>Get ready to rock and roll!</h2>
+                  <h1 style={style2}> Under The Hood</h1>
+                  <h2 style={style2}> Get The Real!</h2>
 
               <input
                   type="text"
@@ -140,7 +148,10 @@ export default class Signin extends React.Component {
                {loading}
                
               </div>
+              
+     
         
     )
   }
 }
+export default SignIn;

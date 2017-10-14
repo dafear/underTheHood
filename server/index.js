@@ -18,7 +18,7 @@ const {PORT, DATABASE_URL} = require('./config');
 
 app.use(morgan('common'));
 
-app.use('/login', passRouter);
+ app.use('/login', passRouter);
  app.use('/register', passRouter);
  app.use('/sessions', passRouter);
 
@@ -38,23 +38,35 @@ app.use('*', function(req, res) {
 
 
 let server;
-function runServer(port=3001) {
+function runServer(databaseUrl=DATABASE_URL, port=PORT) {
     return new Promise((resolve, reject) => {
+        mongoose.connect(databaseUrl, err => {
+
+         if (err) {
+            return reject(err);
+         }
         server = app.listen(port, () => {
             resolve();
-        }).on('error', reject);
+        })
+        .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
+  });
 }
 
 function closeServer() {
-    return new Promise((resolve, reject) => {
+    return mongoose.disconnect().then(() => {
+      return new Promise((resolve, reject) => {
         server.close(err => {
             if (err) {
                 return reject(err);
             }
             resolve();
         });
-    });
+     });
+  });
 }
 
 if (require.main === module) {

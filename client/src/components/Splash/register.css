@@ -5,18 +5,16 @@ html, body {
     height: 100%;
 }
 
-/*.overlay {
-  display: none;
-}*/
 
-body {
+
+ body {
   background: #000000;
   color: white;
   font-family: 'Roboto', helvetica, sans-serif;
   padding: 0;
   margin: 0;
   padding-top: 60px;
-  background-image: url("../images/nb.png");
+  background-image: url("../../images/nb.png");
   background-repeat: no-repeat;
   background-size: cover;
  
@@ -146,10 +144,7 @@ input {
 }
 
 
-#trigger-overlay:disabled {
-  background: #edece9;
-  color: #8E939A;
-}
+
 
 
 

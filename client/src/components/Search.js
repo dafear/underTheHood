@@ -38,6 +38,10 @@ class Search extends Component {
         },
 
       }
+
+      const styles2 = {
+        color: 'black',
+      }
      
 
       const inputProps = {
@@ -46,7 +50,7 @@ class Search extends Component {
     }
         return (
           <div className="Search">
-
+          <h1 style={styles2}>Take A Look</h1>
           <PlacesAutocomplete inputProps={inputProps} 
           styles={myStyles}
           onEnterKeyDown={() => this.handleSelect(props)} />

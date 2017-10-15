@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import {connect} from 'react-redux'
+import {registerUser} from '../../actions/index'
 import './register.css';
 
 
@@ -27,54 +29,13 @@ import './register.css';
 
   }
 
-  handleSubmit = (evt) => {
 
-    if (this.canBeSubmitted()) {
-      var instance = axios.create({ headers: { 'Content-Type': 'application/json' } });
-        evt.preventDefault();
-// console.log(this.state.email);
-//  console.log(this.state.password);
+    
 
-    return instance.post('http://localhost:8080/register/register', {
-
-      email: this.state.email,
-      password: this.state.password,
-  })
-
-    .then(response => {
-      console.log("It worked the server responded with:", response);
-        this.goToBoard(); 
-    })
-
-    .catch(function (error) {
-      console.log(error);
-  });
-
-    } else {
-      alert("You need an email and password");
-
-    }
-  }
-
-    canBeSubmitted() {
-
-      const { email, password } = this.state;
-        return (
-          email.length > 0 &&
-          password.length > 0
-      );
-    }
-
-    goToBoard() {
-
-      if(this.canBeSubmitted()) {this.setState({logged: true})}
-        window.location.href = "/signin"
-    }
-
+   
     render() {
 
-        const isEnabled = this.canBeSubmitted();
-
+      
 
 
       const style = {
@@ -105,14 +66,19 @@ import './register.css';
 
             <div className="list" style={style}>
 
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={(event)=>{
+                event.preventDefault()
+                this.props.dispatch(registerUser(this.state.email, this.state.password))
+                }}>
 
+                <div>
                   <h1>Under The Hood</h1>
-
+                  </div>
 
                 <input
 
                   type="text"
+                  required
                   placeholder="Enter email"
                   value={this.state.email}
                   onChange={this.handleEmailChange}
@@ -120,12 +86,13 @@ import './register.css';
 
                   <input
                   type="password"
+                  required
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={this.handlePasswordChange}
                   /><br/>
 
-                <button disabled={!isEnabled}>Sign up</button>
+                <button>Sign up</button>
 
                <Link  style={savedStyle} to="/signin">Sign In</Link>
 
@@ -140,5 +107,5 @@ import './register.css';
 
   };
 
-      export default Register;
+      export default connect() (Register)
 

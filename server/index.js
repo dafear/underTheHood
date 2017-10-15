@@ -18,9 +18,9 @@ const {PORT, DATABASE_URL} = require('./config');
 
 app.use(morgan('common'));
 
- app.use('/login', passRouter);
- app.use('/register', passRouter);
- app.use('/sessions', passRouter);
+ 
+ app.use('/api/auth', passRouter);
+ 
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -32,10 +32,9 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
     res.sendFile(index);
 });
 
-app.use('*', function(req, res) {
-    return res.status(404).json({message: 'Not Found'});
-   });
-
+app.get('/api/test',(req, res) => {
+  res.send('hello world')
+})
 
 let server;
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {

@@ -1,17 +1,17 @@
 const express = require('express');
-const jsonParser = require('body-parser').json();
 const { User } = require('./usersModels.js');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 const router = express.Router();
-router.use(jsonParser);
+const bodyParser = require('body-parser');
+router.use(bodyParser.json());
 
 
 
 
 
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
   // console.log('hello');
   User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
     if (err) {
@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
 
 //register route
 router.post('/register', (req, res) => {
+ 
   let user = new User();
   user.email = req.body.email;
   user.password = req.body.password;

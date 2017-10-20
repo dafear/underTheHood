@@ -1,16 +1,6 @@
 import axios from 'axios'
 
- // export const fetchData = () => {
-// 	return (dispatch) => {
-//       axios.get()
-//       .then((res) => {
-//           return res.json()
-//       }) 
-//       .then((data) => {
-//       console.log(data)
-//       })
-// 	}
-// }
+ 
   
  export const UPDATE_MAP_LOCATION = 'UPDATE_MAP_LOCATION';
  export const upDateMapLocation = (lat, lng) => ({
@@ -25,14 +15,14 @@ import axios from 'axios'
    
 		const instance = axios.create({ headers: { 'Content-Type': 'application/json' } });
 		
-		return instance.post('http://localhost:8081/api/auth/register', {
+		return instance.post('http://localhost:8080/api/auth/register', {
 
 			email, 
 			password, 
 		})
 
 		.then(response => {
-			console.log("It worked the server responded with:", response);
+			window.location='/signin'
 			
 		})
 
@@ -50,7 +40,7 @@ import axios from 'axios'
    
 		const instance = axios.create({ headers: { 'Content-Type': 'application/json' } });
 		
-		return instance.post('http://localhost:8081/api/auth/login', {
+		return instance.post('http://localhost:8080/api/auth/login', {
 
 			email, 
 			password, 
@@ -59,12 +49,9 @@ import axios from 'axios'
 		.then(response => {
 			console.log("It worked the server responded with:", response.data);
 			localStorage.setItem('apiToken', response.data.token);
-			localStorage.setItem('email', this.state.email);
-
-			if (response.data.success) {
-				this.goToBoard();
-				console.log(response.data.success);
-			}
+			
+			window.location='/dashboard';
+	
 			
 		})
 
@@ -76,5 +63,12 @@ import axios from 'axios'
    }
 
   }
+
+ 
+
+
+
+ 
+
 
  

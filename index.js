@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
     // in development
     const runServer = require('./server').runServer;
     // Just run the server
-    runServer(process.env.PORT || 8081);
+    runServer(process.env.PORT || 8080);
 }
 else {
     const app = express();
@@ -20,8 +20,8 @@ else {
         ws: true, // Proxy websockets too
         router: {
             // Anything to /api goes to our backend
-            'localhost:8081/api': 'http://localhost:3001'
+            'localhost:8080/api': 'http://localhost:3001'
         }
     }));
-    app.listen(process.env.PORT || 8081);
+    app.listen(process.env.PORT || 8080);
 }

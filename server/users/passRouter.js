@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 
 
 router.post('/login', (req, res) => {
-  // console.log('hello');
+  // console.log(req.body)
   User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
     if (err) {
       return res.status(404).json({message: 'User not found'})
@@ -23,8 +23,19 @@ router.post('/login', (req, res) => {
     if (!user.comparePassword(req.body.password)) {
       res.json({success: false, message: 'Wrong password'});
     } else {
-      let email = user.email;
-      
+    
+      let myToken = jwt.sign({
+
+      email: user.email,
+      id: user._id  
+
+    }, config.jwtSecret, {expiresIn: "24h"});
+      res.json({
+      success: true,
+      message: "User successfully loggedin!" + myToken,
+      token: myToken
+
+     });
     
   }
 });

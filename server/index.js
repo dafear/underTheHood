@@ -16,9 +16,11 @@ mongoose.Promise = global.Promise;
 const passRouter = require('./users/passRouter.js');
 const {PORT, DATABASE_URL} = require('./config');
 
-app.use(morgan('common'));
+app.use(morgan('dev'));
 
- 
+ app.get('/api/test',(req,res) => {
+      res.send('helloworld')
+ })
  app.use('/api/auth', passRouter);
  
 
@@ -32,12 +34,10 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
     res.sendFile(index);
 });
 
-app.get('/api/test',(req, res) => {
-  res.send('hello world')
-})
+
 
 let server;
-function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+function runServer(port=3001, databaseUrl=DATABASE_URL) {
     return new Promise((resolve, reject) => {
         mongoose.connect(databaseUrl, err => {
 

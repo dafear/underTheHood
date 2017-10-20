@@ -1,7 +1,13 @@
 
 const initialState = {
 	lat: 40.758896,
-	lng: -73.985130
+	lng: -73.985130,
+	comments: [
+		{
+			lat: 40.8189743,
+			lng: -73.9145183,
+		}
+	]
 }
 
 const map = (state=initialState, action) => {

@@ -59,6 +59,11 @@ import './register.css';
 
       };
 
+      const style1 = {
+        fontSize: 25,
+        color: 'white',
+      }
+
 
           return (
 
@@ -73,6 +78,8 @@ import './register.css';
 
                 <div>
                   <h1>Under The Hood</h1>
+                  <h2 style={style1}> what's really going on in your neighborhood.
+                  <br/> Register here and find out! </h2>
                   </div>
 
                 <input

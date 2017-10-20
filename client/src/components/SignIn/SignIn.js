@@ -30,12 +30,7 @@ class SignIn extends Component {
       this.setState({ password: evt.target.value, error: false });
     }
 
-  goToBoard() {
-             
-            if(this.canBeSubmitted()) {this.setState({logged: true})}
-                   window.location.href = "/dashboard"
-         }
-    
+  
 
     
 
@@ -91,14 +86,14 @@ class SignIn extends Component {
                   required
                   placeholder="Enter email"
                   value={this.state.email}
-                  onChange={evt => this.setState({ email: evt.target.value, error: false }) }
+                  onChange={this.handleEmailChange}
                 /><br/>
                 <input
                   type="password"
                   required
                   placeholder="Enter password"
                   value={this.state.password}
-                  onChange={evt => this.setState({ password: evt.target.value, error: false }) }
+                  onChange={this.handlePasswordChange}
                 /><br/>
                 <button>Sign In</button>
                 <p>{errorMessage}</p>

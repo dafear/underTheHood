@@ -11,6 +11,8 @@ import {connect} from 'react-redux'
    // }
 
       mapClicked(mapProps, map, clickEvent) {
+        console.log(clickEvent.latLng.lat())
+        console.log(clickEvent.latLng.lng())
 
       }
 
@@ -36,15 +38,19 @@ import {connect} from 'react-redux'
           lat: this.props.lat,
           lng: this.props.lng
         }}
-        zoom={10}
-        onClick={this.onMapClicked}
+        zoom={16}
+        onClick={this.mapClicked}
       >  
-        <Marker 
-                name={'Current location'} />
-        <Marker 
+      {
+        this.props.comments.map((comment, index) =>(
+           <Marker 
+           key={index}
           title={'Bronx County Court'}
           name={'court'}
-          position={{lat: 40.826747, lng: -73.92069500000002}} />
+          position={{lat: comment.lat, lng: comment.lng}} />
+        )) 
+      }
+       
           
         <InfoWindow>
             <div>
@@ -60,7 +66,8 @@ const mapStateToProps = (state) => {
 console.log(state.map)
  return{
   lat: state.map.lat,
-  lng: state.map.lng
+  lng: state.map.lng,
+  comments: state.map.comments,
  }
 }
 export default connect(mapStateToProps)(GoogleMap)

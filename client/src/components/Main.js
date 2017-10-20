@@ -6,6 +6,7 @@ import {
 import Splash from './Splash/Splash'
 import App from './App'
 import SignIn from './SignIn/SignIn'
+import Comment from './AddComment/Comment'
 
 const Main = () => (
 
@@ -14,6 +15,7 @@ const Main = () => (
       <Route exact path="/" component={Splash}/>
       <Route exact path="/dashboard" component={App}/>
       <Route exact path="/signin" component={SignIn}/>
+      <Route exact path="/comment" component={Comment}/>
     </div>
   </Router>
 

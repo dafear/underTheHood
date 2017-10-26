@@ -1,4 +1,4 @@
- 
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -19,10 +19,9 @@ html, body {
   color: white;
   font-family: 'Roboto', helvetica, sans-serif;
   padding: 120px;
-  
-   /*background-image: url("../images/fb.png");*/
+
   /*padding-top: 60px;*/
   background-repeat: no-repeat;
   background-size: cover;
- 
+
 }

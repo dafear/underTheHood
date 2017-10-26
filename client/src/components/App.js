@@ -7,23 +7,12 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="Cool"> 
-        
-      	    <Search />
-        <GoogleMap />
-
-
-
-
-
-        
-        
-       
+      <div className="Cool">
+      	 <Search />
+        <GoogleMap {...this.props} />
       </div>
     );
   }
 }
 
 export default App;
-
-

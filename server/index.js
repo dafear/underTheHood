@@ -14,18 +14,17 @@ app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
 const passRouter = require('./users/passRouter.js');
-// const passRouter = require('./users/commentRouter.js');
+
 const {PORT, DATABASE_URL} = require('./config');
 
 app.use(morgan('dev'));
 
  app.get('/api/test',(req,res) => {
-      res.send('helloworld')
+   req.body.email
+      res.json(user)
  })
 
  app.use('/api/auth', passRouter);
- // app.use('/api/auth', commentRouter);
- 
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
